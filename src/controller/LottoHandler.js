@@ -1,8 +1,9 @@
 import { Random } from '@woowacourse/mission-utils';
 import Lotto from '../Lotto.js';
 import InputView from '../views/InputView.js';
+import OutputView from '../views/OutputView.js';
 import Validate from '../utils/Validate.js'
-import { LOTTO_NUMBERS } from '../constants/constants.js';
+import { LOTTO_NUMBERS, MINIMUM_PURCHASE_AMOUNT } from '../constants/constants.js';
 import { NUMBER_SEPARATOR } from '../constants/strings.js';
 import { PROMPTS } from '../constants/strings.js';
 
@@ -30,15 +31,17 @@ class LottoHandler {
 
   handlePurchase(amount) {
     for (let i = 0; i < amount / 1000; i += 1) {
-      const newTicket = createLotto();
+      const newTicket = this.createLotto();
       this.#lottoTickets.push(newTicket);
     }
+
+    OutputView.printTickets(this.#lottoTickets);
   }
 
   async getPurchaseAmount() {
     const purchaseAmount = await InputView.getUserInput(PROMPTS.purchaseAmount);
     Validate.purchaseAmount(purchaseAmount);
-    return Number(purchaseAmount);
+    return this.handlePurchase(Number(purchaseAmount));
   }
 
   async getWinningNumbers() {

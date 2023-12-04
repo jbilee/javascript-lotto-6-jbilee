@@ -1,3 +1,6 @@
+import { Console } from '@woowacourse/mission-utils';
+import { STRING_SEPARATOR } from './constants/strings.js';
+
 class Lotto {
   #numbers;
 
@@ -12,7 +15,9 @@ class Lotto {
     }
   }
 
-  // TODO: 추가 기능 구현
+  getStringRepresentation() {
+    return `[${this.#numbers.join(STRING_SEPARATOR)}]`;
+  }
 }
 
 export default Lotto;
