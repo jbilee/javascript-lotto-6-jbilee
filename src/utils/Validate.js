@@ -9,6 +9,9 @@ const Validate = {
     if (amount % MINIMUM_PURCHASE_AMOUNT !== 0) {
       throw new Error(ERRORS.invalidAmount);
     }
+    if (amount < MINIMUM_PURCHASE_AMOUNT) {
+      throw new Error(ERRORS.invalidAmount);
+    }
   },
 
   bonusNumber(bonusNumber, winningNumbers) {

@@ -4,6 +4,7 @@ import InputView from '../views/InputView.js';
 import Validate from '../utils/Validate.js'
 import { LOTTO_NUMBERS } from '../constants/constants.js';
 import { NUMBER_SEPARATOR } from '../constants/strings.js';
+import { PROMPTS } from '../constants/strings.js';
 
 class LottoHandler {
   #lottoTickets;
@@ -35,18 +36,18 @@ class LottoHandler {
   }
 
   async getPurchaseAmount() {
-    const purchaseAmount = await InputView.readPurchaseAmount();
+    const purchaseAmount = await InputView.getUserInput(PROMPTS.purchaseAmount);
     Validate.purchaseAmount(purchaseAmount);
     return Number(purchaseAmount);
   }
 
   async getWinningNumbers() {
-    const winningNumbers = await InputView.readWinningNumbers();
+    const winningNumbers = await InputView.getUserInput(PROMPTS.winningNumbers);
     return winningNumbers.split(NUMBER_SEPARATOR);
   }
 
   async getBonusNumber() {
-    const bonusNumber = await InputView.readBonusNumber();
+    const bonusNumber = await InputView.getUserInput(PROMPTS.bonusNumber);
     Validate.bonusNumber;
     return Number(bonusNumber);
   }
