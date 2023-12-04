@@ -5,7 +5,7 @@ class App {
     this.handler = new LottoHandler();
   }
   async play() {
-    this.handler.start();
+    return this.handler.start();
   }
 }
 
