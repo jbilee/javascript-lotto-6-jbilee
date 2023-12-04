@@ -1,3 +1,5 @@
+export const MINIMUM_PURCHASE_AMOUNT = 1000;
+
 export const LOTTO_NUMBERS = {
   min: 1,
   max: 45,
@@ -5,6 +7,6 @@ export const LOTTO_NUMBERS = {
 };
 
 export const REGEX = {
-  lottoNumber: /^[1-9]\d{1,2}$/,
-  purchaseAmount: /^[1-9]\d{4,}$/,
+  lottoNumber: /^[1-9]\d+$/,
+  purchaseAmount: /^[1-9]\d{3,}$/,
 };

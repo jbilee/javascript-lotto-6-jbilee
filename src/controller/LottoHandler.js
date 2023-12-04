@@ -3,12 +3,18 @@ import Lotto from '../Lotto.js';
 import InputView from '../views/InputView.js';
 import Validate from '../utils/Validate.js'
 import { LOTTO_NUMBERS } from '../constants/constants.js';
+import { NUMBER_SEPARATOR } from '../constants/strings.js';
 
 class LottoHandler {
   #lottoTickets;
 
   constructor() {
     this.#lottoTickets = [];
+  }
+
+  async start() {
+    const purchaseAmount = await this.getPurchaseAmount();
+    const winningNumbers = await this.getWinningNumbers();
   }
 
   createLotto() {
@@ -32,6 +38,17 @@ class LottoHandler {
     const purchaseAmount = await InputView.readPurchaseAmount();
     Validate.purchaseAmount(purchaseAmount);
     return Number(purchaseAmount);
+  }
+
+  async getWinningNumbers() {
+    const winningNumbers = await InputView.readWinningNumbers();
+    return winningNumbers.split(NUMBER_SEPARATOR);
+  }
+
+  async getBonusNumber() {
+    const bonusNumber = await InputView.readBonusNumber();
+    Validate.bonusNumber;
+    return Number(bonusNumber);
   }
 }
 
