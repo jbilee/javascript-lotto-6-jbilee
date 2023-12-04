@@ -120,7 +120,7 @@ class LottoHandler {
       totalPrize += matches[matchKeys[i]] * PRIZES[[matchKeys[i]]];
     }
 
-    return (totalPrize / spent).toFixed(1);
+    return (totalPrize / spent * 100).toFixed(1);
   }
 }
 
